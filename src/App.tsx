@@ -13,7 +13,7 @@ import {
   SubmitBtn
 } from "./components/base"
 
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loadFormConfig } from "./service/form-config";
 import {
@@ -72,21 +72,16 @@ export default () => {
   };
 
   // Using useForm for field registration 
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, control } = useForm({
     resolver: yupResolver(UserSchema)
   });
 
   //////////////////////////
   const Dropdown = ({ fieldName, options }: {fieldName: string; options: string[] | any}) => {
     return (
-      <Select
-        className="dropdown"
-        options={options.map((option: string) => ({ name: option, label: option }))}
-        value={_dropdownState[fieldName]}
-        onChange={(val) => {
-          _setDropdownState({ ..._dropdownState, [fieldName]: val });
-        }}
-      />
+      <select name={fieldName} ref={register}>
+        {options.map((option: string) => <option value={option}>{option}</option>)}
+      </select>
     );
   };
 
