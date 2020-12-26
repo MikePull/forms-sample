@@ -8,12 +8,13 @@ import {
   FormTitle,
   InputContainer,
   Input,
-  Label,
   InputError,
+  Label,
+  SelectMenu,
   SubmitBtn
 } from "./components/base"
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loadFormConfig } from "./service/form-config";
 import {
@@ -52,23 +53,10 @@ export default () => {
   };
 
   const onSubmit = (data: UserData) => {
-    // unpacking "selected" values by "value" name
-    let selectData = {};
-    for (let key in _dropdownState) {
-      let {
-        [key]: { value }
-      } = _dropdownState;
-      selectData = {
-        ...selectData,
-        [key]: value
-      };
-    }
-
     // Validation functions will go here in case yup resolvers for Formik or useForm (react-hook-form) are not compatible
     console.log("All fields passed validation", {
       ...data,
-      ...selectData
-    });;
+    });
   };
 
   // Using useForm for field registration 
@@ -79,9 +67,9 @@ export default () => {
   //////////////////////////
   const Dropdown = ({ fieldName, options }: {fieldName: string; options: string[] | any}) => {
     return (
-      <select name={fieldName} ref={register}>
+      <SelectMenu name={fieldName} ref={register}>
         {options.map((option: string) => <option value={option}>{option}</option>)}
-      </select>
+      </SelectMenu>
     );
   };
 

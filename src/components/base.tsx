@@ -81,6 +81,12 @@ export const Input = styled.input`
   }
 `;
 
+export const SelectMenu = styled.select`
+  height: 3em;
+  width: 90%;
+  padding: .25em;
+`
+
 export const Label = styled.label`
   color: #a53f2b;
   font-family: "Open Sans";
