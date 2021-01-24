@@ -98,7 +98,7 @@ export const InputError = styled.p`
   transition: all 0.45s ease-in-out;
 `;
 
-export const SubmitBtn = styled.button`
+export const Btn = styled.button`
   margin-top: 3em;
   padding: 0.1em 0.7em;
   background: transparent;
@@ -114,3 +114,9 @@ export const SubmitBtn = styled.button`
     color: #fbf2c0;
   }
 `;
+
+export const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`
